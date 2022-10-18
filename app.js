@@ -29,11 +29,11 @@ app.use(limiter);
 
 //mongo db connection
 
-let URI =`mongodb+srv://taskmanager1234:${process.env.pass}@cluster0.xpw4s58.mongodb.net/test`;
+let URI =`mongodb+srv://taskmanager1234:taskmanager1234@cluster0.xpw4s58.mongodb.net/task-manager`;
 
 //"mongodb+srv://<username>:<password>@cluster0.m8fxg.mongodb.net/CRUD?retryWrites=true&w=majority"
 
-let OPTION = { user: "testuser107", pass: "testuser107", autoIndex: true };
+let OPTION = { user: "taskmanager1234", pass: "taskmanager1234", autoIndex: true };
 mongoose.connect(URI, OPTION, (error) => {
   console.log("connetction success");
   console.log(error);
