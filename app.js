@@ -29,7 +29,7 @@ app.use(limiter);
 
 //mongo db connection
 
-let URI =`mongodb+srv://taskmanager1234:taskmanager1234@cluster0.xpw4s58.mongodb.net/task-manager`;
+let URI =`mongodb+srv://taskmanager1234:${process.env.pass}@cluster0.xpw4s58.mongodb.net/task-manager`;
 
 //"mongodb+srv://<username>:<password>@cluster0.m8fxg.mongodb.net/CRUD?retryWrites=true&w=majority"
 
