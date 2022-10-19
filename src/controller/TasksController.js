@@ -43,26 +43,26 @@ exports.updateTaskStatus=(req, res) => {
     })
 }
 
-exports.listTaskByStatus =(req, res) => {
-    let status = req.params.status;
-    let email = req.headers['email'];
+exports.listTaskByStatus=(req,res)=>{
+    let status= req.params.status;
+    let email=req.headers['email'];
     TasksModel.aggregate([
-        {$match: {status:status, email:email}},
+        {$match:{status:status,email:email}},
         {$project:{
-            _id:1, title:1, description:1, status:1,
-            createdDate: {
-                $dateToString:{
-                    date: "createdDate",
-                    format: "%d-%m-%Y"
+                _id:1,title:1,description:1, status:1,
+                createdDate:{
+                    $dateToString:{
+                        date:"$createdDate",
+                        format:"%d-%m-%Y"
+                    }
                 }
-            }
-        }}
-    ], (err, data) => {
+            }}
+    ], (err,data)=>{
         if(err){
-            res.status(400).json({status:"fail", data:err})
+            res.status(400).json({status:"fail",data:err})
         }
         else{
-            res.status(200).json({status:"success", data:data})
+            res.status(200).json({status:"success",data:data})
         }
     })
 }
