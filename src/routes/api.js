@@ -18,6 +18,7 @@ router.post("/deleteTask",AuthVerifyMiddleware, TasksController.deleteTask)
 
 router.get("/updateTaskStatus/:id/:status",AuthVerifyMiddleware, TasksController.updateTaskStatus)
 router.get("/listTaskByStatus/:status",AuthVerifyMiddleware, TasksController.listTaskByStatus)
+router.get("/taskStatusCount",AuthVerifyMiddleware, TasksController.taskStatusCount)
 
 
 

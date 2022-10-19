@@ -1,3 +1,4 @@
+const TaskModel = require("../models/TasksModel");
 const TasksModel = require("../models/TasksModel")
 
 exports.createTask=(req, res) => {
@@ -63,6 +64,21 @@ exports.listTaskByStatus=(req,res)=>{
         }
         else{
             res.status(200).json({status:"success",data:data})
+        }
+    })
+}
+
+exports.taskStatusCount = (req, res) => {
+    let email = req.headers['email'];
+    TaskModel.aggregate([
+        {$match:{email:email}},
+        {$group: {_id:"$status", sum:{$count: {}}}}
+    ], (err, data) => {
+        if(err){
+            res.status(400).json({status:"fail", data:err})
+        }
+        else{
+            res.status(200).json({status:"success", data:data})
         }
     })
 }
