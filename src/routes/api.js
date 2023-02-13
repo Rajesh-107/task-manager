@@ -7,6 +7,8 @@ const AuthVerifyMiddleware = require("../middleware/AuthVerifyMiddleware")
 const router = express.Router();
 
 router.post("/registartion", UsersController.registartion)
+router.get("/getalluser", UsersController.getAllUsers)
+router.get("/logout", UsersController.logoutController)
 
 router.post("/UserLogin", UsersController.UserLogin)
 
